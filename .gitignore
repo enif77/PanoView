@@ -1,0 +1,12 @@
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+panoview-win32-ia32/
+node_modules/
+
+# DNX
+package-lock.json

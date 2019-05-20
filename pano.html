@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pano View v1.0.1</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="styles/view.css">
+
+    <script src="js/three.min.js"></script>
+    <script src="js/controls/OrbitControls.js"></script>
+    <script src="js/view.js"></script>
+
+    <style>
+        html, body {
+            cursor: all-scroll;
+        }
+    </style>
+  </head>
+
+  <body>
+    <div id="container"></div>
+  </body>
+
+  <script>
+    const remote = require('electron').remote;
+
+    // Defined in view.js.
+    view_dir_path = remote.getGlobal('sharedObject').imagePath;
+
+    // Show the pano path to the user.
+    document.title += ' - ' + view_dir_path;
+
+    view_Init();
+    view_Animate();
+  </script>
+</html>

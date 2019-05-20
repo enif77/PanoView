@@ -1,0 +1,19 @@
+{
+  "name": "panoview",
+  "version": "1.0.1",
+  "description": "Panoramatic images viewer in Electron.js.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Premysl Fara",
+  "license": "MIT",
+  "dependencies": {
+    "image-size": "^0.7.4"
+  },
+  "devDependencies": {
+    "electron": "^5.0.1",
+    "electron-packager": "^13.1.1"
+  }
+}

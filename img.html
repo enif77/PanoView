@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Pano View v1.0.1</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles/view.css">
+
+        <style>
+            :root {
+                --image-url: url("img/favicon.png");
+                --max-width: 100vw;
+                --height: 100vw;
+            }
+
+            div.stretchy-wrapper
+            {
+                width: 100vw; 
+                max-width: var(--max-width);
+                height: var(--height);
+                max-height: 100vh;
+
+                background: var(--image-url);
+                background-position: top center;
+                background-repeat: no-repeat;
+                background-size: cover; 
+
+                margin: auto;
+                position: absolute;
+                top:0;bottom:0; /* vertical center */
+                left:0;right:0; /* horizontal center */
+                z-index: 5;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="stretchy-wrapper"></div>
+
+        <script>
+            const remote = require('electron').remote;
+
+            const imagePath = remote.getGlobal('sharedObject').imagePath;
+
+            // Show the pano path to the user.
+            document.title = document.title + ' - ' + imagePath;
+
+            var ratio = remote.getGlobal('sharedObject').imageRatio;
+            var maxWidth = ratio * 100.0;
+            var height = (1.0 / ratio) * 100.0;
+
+            var img = document.querySelector('.stretchy-wrapper');
+
+            let root = document.documentElement;
+
+            root.style.setProperty('--image-url', 'url("' + imagePath + '")');
+            root.style.setProperty('--max-width', maxWidth + "vh");
+            root.style.setProperty('--height', height + "vw");
+        </script>
+    </body>
+</html>
